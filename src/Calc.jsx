@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
-import './calc.css';
-import './Nav'
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import "./calc.css";
 
 const Calc = () => {
-  const [number1, setNumber1] = useState(0);
-  const [number2, setNumber2] = useState(0);
-  const [result, setResult] = useState(0);
+  const [number1, setNumber1] = useState("");
+  const [number2, setNumber2] = useState("");
+  const [result, setResult] = useState("");
 
   const handleAdd = () => {
     setResult(Number(number1) + Number(number2));
+    handleClear();
   };
-  
+
   const handleSubtract = () => {
     setResult(Number(number1) - Number(number2));
+    handleClear();
   };
-  
+
   const handleMultiply = () => {
     setResult(Number(number1) * Number(number2));
+    handleClear();
   };
-  
+
   const handleDivide = () => {
     try {
       const resultValue = Number(number1) / Number(number2);
@@ -27,80 +29,97 @@ const Calc = () => {
         throw new Error("Invalid division");
       }
       setResult(resultValue);
+      handleClear();
     } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: error,
-        footer: 'bhai kiya krna chahta h tu'
+        text: "Cannot divide by zero!",
+        footer: "Please enter a valid number",
       });
-      
     }
   };
-  
-  const handlePercentage = () => {
-    setResult((Number(number1)) % Number(number2));
-  };
-  
-    const handleClear = () => {
-    setResult('');
-    setNumber1('');
-    setNumber2('');
-  };
-  
-  return (
-    <>
-    <div className="container">
-   
-    <div className="calc-container">
-      <h1 className='text-center font-semibold  text-2xl'>Simple Calculator</h1>
-      <hr />
-      <form onSubmit={(e) => {
-        e.preventDefault();
-      }}>
-        <div className="input grid grid-cols-1">
-          <input
-          placeholder='Number 1'
-            type="number"
-            className="rounded m-3 text-center border-orange-400 border-2  font-semibold px-5 py-2"
-            value={number1}
-            onChange={(e) => setNumber1(e.target.value)}
-          />
-          <input
-          placeholder='Number 2'
-            type="number"
-            className="rounded  m-3 text-center font-semibold border-orange-400 border-2 px-5 py-2"
-            value={number2}
-            onChange={(e) => setNumber2(e.target.value)}
-          />
-        </div>
-     
-        <div className="buttons  grid grid-cols-3">
-          <button  className="px-5 py-2 bg-blue-400 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handleAdd} type='submit'>
-            +
-          </button>
-          <button className="px-5 py-2 bg-blue-400 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handleSubtract} type='submit'>
-            -
-          </button>
-          <button className="px-5 py-2 bg-blue-400 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handleMultiply} type='submit'>
-            &times;
-          </button>
-          <button className="px-5 py-2 bg-blue-400 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handleDivide} type='submit'>
-            &divide;
-          </button>
-          <button className="px-5 py-2 bg-blue-400 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handlePercentage} type='submit'>
-            %
-          </button>
-          <button className="px-5 py-2 bg-blue-300 hover:bg-blue-800 rounded-full h-16 w-16 m-5" onClick={handleClear} type='submit'>
-            C
-          </button>
 
-        </div>
-        <input type='text'placeholder='Result :' className='rounded  border-orange-400 border-2  text-center font-semibold m-3 px-5 py-2' value={result} readOnly />
-      </form>
+  const handlePercentage = () => {
+    setResult(Number(number1) % Number(number2));
+  };
+
+  const handleClear = () => {
+    setResult("");
+    setNumber1("");
+    setNumber2("");
+  };
+
+  return (
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900'>
+      <div className='calc-container bg-transparent shadow-lg rounded-lg p-8 w-full max-w-lg'>
+        <form onSubmit={(e) => e.preventDefault()} className='space-y-6'>
+          <div className='space-y-4'>
+            <input
+              placeholder='Number 1'
+              type='number'
+              className='w-full p-3 border rounded-lg text-gray-800 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-400'
+              value={number1}
+              onChange={(e) => setNumber1(e.target.value)}
+            />
+            <input
+              placeholder='Number 2'
+              type='number'
+              className='w-full p-3 border rounded-lg text-gray-800 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-400'
+              value={number2}
+              onChange={(e) => setNumber2(e.target.value)}
+            />
+          </div>
+          <div className='grid grid-cols-3 gap-4'>
+            <button
+              onClick={handleAdd}
+              className='p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300'
+            >
+              +
+            </button>
+            <button
+              onClick={handleSubtract}
+              className='p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300'
+            >
+              -
+            </button>
+            <button
+              onClick={handleMultiply}
+              className='p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300'
+            >
+              &times;
+            </button>
+            <button
+              onClick={handleDivide}
+              className='p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300'
+            >
+              &divide;
+            </button>
+            <button
+              onClick={handlePercentage}
+              className='p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300'
+            >
+              %
+            </button>
+            <button
+              onClick={handleClear}
+              className='p-4 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300'
+            >
+              C
+            </button>
+          </div>
+          <div className='mt-6'>
+            <input
+              type='text'
+              placeholder='Result'
+              readOnly
+              className='w-full p-3 border rounded-lg text-center font-bold bg-gray-100 text-gray-800'
+              value={result}
+            />
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-    </>
   );
 };
 

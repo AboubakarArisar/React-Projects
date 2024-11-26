@@ -1,17 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-input {
-    width: 90%;
+.calc-container {
+  transition: all 0.3s ease;
 }
 
-input:focus {
-    outline: none;
-}
-.calc-container{
-    border: 2px solid silver;
-    border-radius: 5px;
-    width: 20%;
-
+.calc-container:hover {
+  transform: translateY(-5px);
 }
