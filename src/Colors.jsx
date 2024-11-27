@@ -30,8 +30,11 @@ const Colors = () => {
     <>
       <div className='w-full min-h-screen bg-gray-900 flex justify-start items-center flex-col gap-4 p-4'>
         <div className='button'>
-          <button className='bg-yellow-400 p-4 rounded' onClick={handleClick}>
-            Get Colors
+          <button
+            className='bg-yellow-400 p-4 font-semibold rounded'
+            onClick={handleClick}
+          >
+            Generate Colors
           </button>
         </div>
         {flag && (
@@ -42,7 +45,9 @@ const Colors = () => {
                 <div
                   key={index}
                   className={`flex justify-center items-center w-full md:w-[${widthPercentage}%] h-20 md:h-full`}
-                  style={{ backgroundColor: item }}
+                  style={{
+                    backgroundColor: item,
+                  }}
                 >
                   <div className='items'>
                     <i
