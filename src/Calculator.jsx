@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import "./calc.css";
 
-const Calc = () => {
+const Calculator = () => {
   const [number1, setNumber1] = useState("");
   const [number2, setNumber2] = useState("");
   const [result, setResult] = useState("");
@@ -45,7 +45,7 @@ const Calc = () => {
   };
 
   const handleClear = () => {
-    setResult("");
+    // setResult("");
     setNumber1("");
     setNumber2("");
   };
@@ -123,4 +123,4 @@ const Calc = () => {
   );
 };
 
-export default Calc;
+export default Calculator;

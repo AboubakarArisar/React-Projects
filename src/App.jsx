@@ -1,44 +1,22 @@
-import { useState } from 'react';
-import './App.css';
+import React from "react";
 
-function App() {
-  const [friendName, setFriendName] = useState("");
-  const [friendsList, setFriendsList] = useState([]);
-
+const App = () => {
   return (
-    <div className="container">
-      <h1>Assignment Question no 6</h1>
-
-      <div className="box">
-        <form
-          onSubmit={function (event) {
-            event.preventDefault();
-            setFriendsList([...friendsList, friendName]);
-            setFriendName("");
-          }}
-        >
-          <input
-            type="text"
-            placeholder='friend name'
-            value={friendName}
-            onChange={function (event) {
-              setFriendName(event.target.value);
-            }}
-          />
-          <input id='button' type="submit" value="Save" />
-        </form>
-   
-      </div>
-      <div className='list'>
-        <h2>Friends list</h2>
-          <ul>
-            {friendsList.map((friend, index) => (
-              <li key={index}>{friend}</li>
-            ))}
-          </ul>
+    <div>
+      <div className='w-full h-screen flex justify-center items-center bg-slate-900 py-10'>
+        <div className='flex flex-col md:flex-row justify-center items-center space-y-5 md:space-y-0 md:space-x-10'>
+          <div className='text-center md:text-left'>
+            <span className='block text-5xl text-white font-semibold'>
+              REACT
+            </span>
+            <span className='block text-5xl text-yellow-500 font-semibold'>
+              PRACTICE
+            </span>
+          </div>
         </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

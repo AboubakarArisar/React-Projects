@@ -32,7 +32,7 @@ const Navbar = () => {
         <nav
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } md:flex md:items-center md:space-x-5 bg-[#1a3d50] md:bg-transparent absolute md:static left-0 right-0 top-full md:top-auto px-5 md:px-0 py-3 md:py-0 z-10`}
+          } md:flex md:items-center md:space-x-5 bg-[#1a3d50] font-semibold md:bg-transparent absolute md:static left-0 right-0 top-full md:top-auto px-5 md:px-0 py-3 md:py-0 z-10`}
           style={{
             backgroundColor: isMenuOpen ? "#1a3d50" : "transparent",
             top: isMenuOpen ? "100%" : "auto",
